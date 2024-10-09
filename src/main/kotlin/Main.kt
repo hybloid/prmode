@@ -7,3 +7,7 @@ fun main() {
 fun bar(x: Int): Boolean {
     return true
 }
+
+fun baz1(x: Int): Boolean {
+    return true
+}
