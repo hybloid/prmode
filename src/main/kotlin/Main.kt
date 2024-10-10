@@ -11,3 +11,7 @@ fun bar(x: Int): Boolean {
 fun baz1(x: Int): Boolean {
     return true
 }
+
+fun baz2(x: Int): Boolean {
+    return true
+}
