@@ -20,4 +20,9 @@ class Other {
         val b = 6
         return 5
     }
+
+    fun baz3(x: Int): Int {
+        val b = 6
+        return 5
+    }
 }
