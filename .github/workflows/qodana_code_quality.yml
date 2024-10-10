@@ -12,17 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: ${{ github.event.pull_request.head.sha }}  # to check out the actual pull request commit, not the merge commit
           fetch-depth: 0
-      - name: Calculate merge-base SHA
-        if: github.event_name == 'pull_request'
-        id: merge-base
-        run: |
-          BASE_SHA="${{ github.event.pull_request.base.sha }}"
-          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
-          MERGE_BASE=$(git merge-base "$BASE_SHA" "$HEAD_SHA")
-          echo "MERGE_BASE=$MERGE_BASE" >> $GITHUB_ENV
       - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@v2024.2
+        uses: JetBrains/qodana-action@main
+        with:
+          upload-result: true
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
-          QODANA_PR_SHA: ${{ env.MERGE_BASE || '' }}
