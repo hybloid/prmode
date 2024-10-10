@@ -23,3 +23,7 @@ fun baz3(x: Int): Boolean {
 fun baz4(x: Int): Boolean {
     return true
 }
+
+fun baz5(x: Int): Boolean {
+    return true
+}
